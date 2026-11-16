@@ -20,6 +20,9 @@ TALOS_SRC_DIR="${TALOS_SRC_DIR:-$HOME/talos/sidero-talos}"
 REGISTRY="${REGISTRY:-localhost:5000}"
 
 # --- Sidero image refs (mirrored to ghcr.io/nhz-io/sidero-* by Phase C) ---
+# Existing images (bldr mirror, imager, SBC kernel) still live under ghcr.io/nhz-io and are PULLED
+# from SOURCE_PREFIX; new images are PUSHED to IMAGE_PREFIX (the shinsenkyo-net org).
+SOURCE_PREFIX="${SOURCE_PREFIX:-ghcr.io/nhz-io}"
 PKGS_PREFIX="${PKGS_PREFIX:-ghcr.io/siderolabs}"
 PKGS="${PKGS:-v1.9.0}"
 TOOLS_PREFIX="${TOOLS_PREFIX:-ghcr.io/siderolabs}"
@@ -38,10 +41,10 @@ CLOUDFLARED_IMAGE="${CLOUDFLARED_IMAGE:-ghcr.io/siderolabs/cloudflared:2026.7.1}
 DEFAULT_SHORT_HASH="$(git -C "${PROJECT_DIR}" rev-parse --short=7 HEAD 2>/dev/null || echo unknown)"
 ITER="${ITER:-1}"
 BUILD_TAG="${BUILD_TAG:-1.13.7-e24c-${ITER}-${DEFAULT_SHORT_HASH}}"
-IMAGE_PREFIX="${IMAGE_PREFIX:-ghcr.io/nhz-io}"
+IMAGE_PREFIX="${IMAGE_PREFIX:-ghcr.io/shinsenkyo-net}"
 
-# --- Imager (rebuilt from nhz-io/sidero-talos fork; falls back to existing tag) ---
-IMAGER_TAG="${IMAGER_TAG:-${IMAGE_PREFIX}/imager-rk3528:v1.13.7-v12}"
+# --- Imager (rebuilt from shinsenkyo-net/sidero-talos fork; falls back to existing tag) ---
+IMAGER_TAG="${IMAGER_TAG:-${SOURCE_PREFIX}/imager-rk3528:v1.13.7-v12}"
 INSTALLER_TAG="${IMAGE_PREFIX}/talos-sbc-rk3528-installer:${BUILD_TAG}"
 
 echo "============================================"

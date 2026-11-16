@@ -7,19 +7,21 @@
 # boots with no network (end0/wan never created).
 #
 # Usage: ./scripts/rebuild-imager.sh [tag]
-# Output: ghcr.io/nhz-io/imager-rk3528:<tag>
+# Output: ghcr.io/shinsenkyo-net/imager-rk3528:<tag>
 # Default tag: v1.13.7-v13
 
 set -eou pipefail
 
 TAG="${1:-v1.13.7-v13}"
 TALOS_SRC_DIR="${TALOS_SRC_DIR:-$HOME/talos/sidero-talos}"
-IMAGE_PREFIX="${IMAGE_PREFIX:-ghcr.io/nhz-io}"
+IMAGE_PREFIX="${IMAGE_PREFIX:-ghcr.io/shinsenkyo-net}"
+# Existing SBC kernel image is still under ghcr.io/nhz-io (pulled, not pushed).
+SOURCE_PREFIX="${SOURCE_PREFIX:-ghcr.io/nhz-io}"
 IMAGER_TAG="${IMAGE_PREFIX}/imager-rk3528:${TAG}"
 
 # SBC kernel image (arm64, built by talos-sbc-rk3528 bldr kernel-radxa-e24c target).
 # Contains RTL8365MB switch driver + Rockchip GMAC driver.
-SBC_KERNEL_IMAGE="${SBC_KERNEL_IMAGE:-${IMAGE_PREFIX}/talos-kernel-rk3528:v0.5.1-talos}"
+SBC_KERNEL_IMAGE="${SBC_KERNEL_IMAGE:-${SOURCE_PREFIX}/talos-kernel-rk3528:v0.5.1-talos}"
 
 # Stock Sidero kernel for amd64 (SBC kernel is arm64-only).
 STOCK_KERNEL_AMD64="${STOCK_KERNEL_AMD64:-ghcr.io/siderolabs/kernel:v1.13.0-49-g91fe0a0}"

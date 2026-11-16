@@ -9,7 +9,7 @@ set -eou pipefail
 
 TALOS_SRC_DIR="${1:-${TALOS_SRC_DIR:-$HOME/talos/sidero-talos}}"
 BRANCH="${TALOS_BRANCH:-v1.13.7-rk3528}"
-FORK_URL="${TALOS_FORK_URL:-https://github.com/nhz-io/sidero-talos.git}"
+FORK_URL="${TALOS_FORK_URL:-https://github.com/shinsenkyo-net/sidero-talos.git}"
 
 if [ -d "${TALOS_SRC_DIR}/.git" ]; then
   # Verify it's our fork; if not, abort rather than clobber.

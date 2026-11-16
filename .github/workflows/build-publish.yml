@@ -78,14 +78,14 @@ jobs:
         run: |
           docker pull localhost:5000/talos-sbc-rk3528:${{ github.ref_name }}
           docker tag localhost:5000/talos-sbc-rk3528:${{ github.ref_name }} \
-                     ghcr.io/nhz-io/talos-sbc-rk3528:${{ github.ref_name }}
-          docker push ghcr.io/nhz-io/talos-sbc-rk3528:${{ github.ref_name }}
+                     ghcr.io/shinsenkyo-net/talos-sbc-rk3528:${{ github.ref_name }}
+          docker push ghcr.io/shinsenkyo-net/talos-sbc-rk3528:${{ github.ref_name }}
 
       - name: Push installer image to ghcr.io
         run: |
           docker tag ghcr.io/nhz-io/imager-rk3528:v1.13.7-v12 \
-                     ghcr.io/nhz-io/talos-sbc-rk3528-installer:${{ github.ref_name }}
-          docker push ghcr.io/nhz-io/talos-sbc-rk3528-installer:${{ github.ref_name }}
+                     ghcr.io/shinsenkyo-net/talos-sbc-rk3528-installer:${{ github.ref_name }}
+          docker push ghcr.io/shinsenkyo-net/talos-sbc-rk3528-installer:${{ github.ref_name }}
 
   release:
     needs: build

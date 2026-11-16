@@ -1,18 +1,18 @@
 [submodule "kwiboo-u-boot-rockchip"]
 	path = kwiboo-u-boot-rockchip
-	url = git@github.com:nhz-io/kwiboo-u-boot-rockchip.git
+	url = git@github.com:shinsenkyo-net/kwiboo-u-boot-rockchip.git
 [submodule "rockchip-rkbin"]
 	path = rockchip-rkbin
-	url = git@github.com:nhz-io/rockchip-rkbin.git
+	url = git@github.com:shinsenkyo-net/rockchip-rkbin.git
 [submodule "sidero-bldr"]
 	path = sidero-bldr
-	url = git@github.com:nhz-io/sidero-bldr.git
+	url = git@github.com:shinsenkyo-net/sidero-bldr.git
 [submodule "sidero-toolchain"]
 	path = sidero-toolchain
-	url = git@github.com:nhz-io/sidero-toolchain.git
+	url = git@github.com:shinsenkyo-net/sidero-toolchain.git
 [submodule "sidero-tools"]
 	path = sidero-tools
-	url = git@github.com:nhz-io/sidero-tools.git
+	url = git@github.com:shinsenkyo-net/sidero-tools.git
 [submodule "sidero-pkgs"]
 	path = sidero-pkgs
-	url = git@github.com:nhz-io/sidero-pkgs.git
+	url = git@github.com:shinsenkyo-net/sidero-pkgs.git

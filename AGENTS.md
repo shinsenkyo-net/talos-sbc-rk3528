@@ -61,6 +61,10 @@ Read `build.sh`, `scripts/rebuild-imager.sh`, and the Obsidian note `Building Ta
 
 ## Build artifacts
 
+Existing artifacts below are still under `ghcr.io/nhz-io` (GHCR paths did not follow the repo
+move to `shinsenkyo-net`). New pushes go to `ghcr.io/shinsenkyo-net` (`IMAGE_PREFIX`); existing
+images are pulled via `SOURCE_PREFIX`.
+
 | Artifact | Current tag | Purpose |
 |----------|-------------|---------|
 | `ghcr.io/nhz-io/imager-rk3528` | `v1.13.7-v14` | Imager (SBC kernel + effivarfs patch) |

@@ -9,7 +9,7 @@ post-install).
 ## Status
 
 Boots cleanly to Talos maintenance mode on Radxa E24C. Current image tag:
-`1.13.7-e24c-1-45e581e` (see [releases](https://github.com/nhz-io/talos-sbc-rk3528/releases)).
+`1.13.7-e24c-1-45e581e` (see [releases](https://github.com/shinsenkyo-net/talos-sbc-rk3528/releases)).
 
 - Kernel: stock Linux 6.18.39 (Talos config-arm64) — 6.19 crashes in
   `genpd_power_off_work_fn` on RK3528 SCMI; 6.18.39 is the known-good baseline.
@@ -43,15 +43,16 @@ All external sources forked into the `nhz-io` GitHub org at pinned tags:
 
 | Fork | Upstream | Pinned at | Purpose |
 |------|----------|-----------|---------|
-| `nhz-io/kwiboo-u-boot-rockchip` | `Kwiboo/u-boot-rockchip` | `affa0a9` | Radxa E24C defconfig + DTS |
-| `nhz-io/rockchip-rkbin` | `rockchip-linux/rkbin` | `74213af` | DDR init + BL31 blobs (proprietary) |
-| `nhz-io/sidero-talos` | `siderolabs/talos` | `v1.13.7` + branch `v1.13.7-rk3528` | Talos OS source + custom modules |
-| `nhz-io/sidero-bldr` | `siderolabs/bldr` | `v0.5.6` | Sidero build frontend (Go) |
-| `nhz-io/sidero-toolchain` | `siderolabs/toolchain` | `v1.13.0` | binutils + gcc + musl + golang from source |
-| `nhz-io/sidero-tools` | `siderolabs/tools` | `v1.13.0` | Cross-toolchain (dtc, elfutils, etc.) |
-| `nhz-io/sidero-pkgs` | `siderolabs/pkgs` | `v1.13.0` | ~50 individual package sources (kernel, runc, ...) |
+| `shinsenkyo-net/kwiboo-u-boot-rockchip` | `Kwiboo/u-boot-rockchip` | `affa0a9` | Radxa E24C defconfig + DTS |
+| `shinsenkyo-net/rockchip-rkbin` | `rockchip-linux/rkbin` | `74213af` | DDR init + BL31 blobs (proprietary) |
+| `shinsenkyo-net/sidero-talos` | `siderolabs/talos` | `v1.13.7` + branch `v1.13.7-rk3528` | Talos OS source + custom modules |
+| `shinsenkyo-net/sidero-bldr` | `siderolabs/bldr` | `v0.5.6` | Sidero build frontend (Go) |
+| `shinsenkyo-net/sidero-toolchain` | `siderolabs/toolchain` | `v1.13.0` | binutils + gcc + musl + golang from source |
+| `shinsenkyo-net/sidero-tools` | `siderolabs/tools` | `v1.13.0` | Cross-toolchain (dtc, elfutils, etc.) |
+| `shinsenkyo-net/sidero-pkgs` | `siderolabs/pkgs` | `v1.13.0` | ~50 individual package sources (kernel, runc, ...) |
 
-Container images mirrored to `ghcr.io/nhz-io/`:
+Container images mirrored to `ghcr.io/nhz-io/` (they stayed there when the repos moved to
+the `shinsenkyo-net` org; new builds push to `ghcr.io/shinsenkyo-net/`):
 
 - `ghcr.io/nhz-io/sidero-bldr:v0.5.6`
 - `ghcr.io/nhz-io/sidero-toolchain:v1.13.0`
@@ -108,7 +109,7 @@ git clone --recurse-submodules git@github.com:nhz-io/talos-workspace.git ~/talos
 ### Standalone clone (without the workspace)
 
 ```bash
-git clone --recurse-submodules git@github.com:nhz-io/talos-sbc-rk3528.git ~/talos-sbc-rk3528
+git clone --recurse-submodules git@github.com:shinsenkyo-net/talos-sbc-rk3528.git ~/talos-sbc-rk3528
 ./scripts/setup-talos-src.sh   # clones sidero-talos to ~/talos/sidero-talos by default
 
 # Optional: rebuild imager from fork (default: reuses existing published tag)
@@ -146,7 +147,8 @@ sudo dd if=metal-arm64.raw of=/dev/rdiskN bs=4M conv=sync
 | `TOOLS_PREFIX` | `ghcr.io/siderolabs` | Tools image namespace |
 | `TOOLS` | `v1.9.0` | Tools image tag |
 | `BLDR_IMAGE` | `ghcr.io/nhz-io/sidero-bldr:v0.5.6` | bldr syntax image |
-| `IMAGE_PREFIX` | `ghcr.io/nhz-io` | Where to push U-Boot + overlay + installer images |
+| `IMAGE_PREFIX` | `ghcr.io/shinsenkyo-net` | Where to push U-Boot + overlay + installer images |
+| `SOURCE_PREFIX` | `ghcr.io/nhz-io` | Where existing images (imager, SBC kernel) are pulled from |
 | `IMAGER_TAG` | `ghcr.io/nhz-io/imager-rk3528:v1.13.7-v12` | Imager image to use |
 
 ## Layout
