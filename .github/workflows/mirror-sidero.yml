@@ -22,13 +22,13 @@ jobs:
       matrix:
         include:
           - source: ghcr.io/siderolabs/bldr
-            mirror: ghcr.io/nhz-io/sidero-bldr
+            mirror: ghcr.io/shinsenkyo-net/sidero-bldr
             tag: v0.5.6
           - source: ghcr.io/siderolabs/toolchain
-            mirror: ghcr.io/nhz-io/sidero-toolchain
+            mirror: ghcr.io/shinsenkyo-net/sidero-toolchain
             tag: v1.13.0
           - source: ghcr.io/siderolabs/tools
-            mirror: ghcr.io/nhz-io/sidero-tools
+            mirror: ghcr.io/shinsenkyo-net/sidero-tools
             tag: v1.13.0-8-gc2844e6
     steps:
       - name: Login to ghcr.io (read-only)

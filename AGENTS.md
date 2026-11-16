@@ -6,7 +6,7 @@ This repo builds the Radxa E24C (RK3528A) Talos SBC image, U-Boot, and extension
 
 ### 1. The imager MUST be built with the SBC kernel
 
-The SBC kernel (`ghcr.io/nhz-io/talos-kernel-rk3528:v0.5.1-talos`) contains the Rockchip GMAC driver + RTL8365MB switch driver. Without it, e24c boots with NO network interfaces — `end0`/`wan` are never created and every service hangs.
+The SBC kernel (`ghcr.io/shinsenkyo-net/talos-kernel-rk3528:v0.5.1-talos`) contains the Rockchip GMAC driver + RTL8365MB switch driver. Without it, e24c boots with NO network interfaces — `end0`/`wan` are never created and every service hangs.
 
 - Use `scripts/rebuild-imager.sh` — it passes `PKG_KERNEL` + `PKG_KERNEL_AMD64` correctly.
 - NEVER run `make docker-imager` directly without `PKG_KERNEL`. The Makefile defaults to the stock Sidero kernel (clang, no SBC drivers).
@@ -26,7 +26,7 @@ All three parts required: `e24c` marker, iteration number (bump from previous), 
 
 When rebuilding the imager, verify the kernel is correct before deploying:
 ```
-docker create --entrypoint /bin/true ghcr.io/nhz-io/imager-rk3528:<tag>
+docker create --entrypoint /bin/true ghcr.io/shinsenkyo-net/imager-rk3528:<tag>
 docker cp <cid>:/usr/install/arm64/vmlinuz /tmp/vmlinuz
 sha256sum /tmp/vmlinuz   # must match known-good SBC kernel: 71db7b0952...
 ```
@@ -61,18 +61,18 @@ Read `build.sh`, `scripts/rebuild-imager.sh`, and the Obsidian note `Building Ta
 
 ## Build artifacts
 
-Existing artifacts below are still under `ghcr.io/nhz-io` (GHCR paths did not follow the repo
-move to `shinsenkyo-net`). New pushes go to `ghcr.io/shinsenkyo-net` (`IMAGE_PREFIX`); existing
-images are pulled via `SOURCE_PREFIX`.
+Images live under `ghcr.io/shinsenkyo-net` (copied by digest from `ghcr.io/nhz-io` on 2026-11-16,
+when the repos moved to the org; the old paths still exist). Pushes go to `IMAGE_PREFIX`, pulls of
+existing images use `SOURCE_PREFIX`; both default to `ghcr.io/shinsenkyo-net`.
 
 | Artifact | Current tag | Purpose |
 |----------|-------------|---------|
-| `ghcr.io/nhz-io/imager-rk3528` | `v1.13.7-v14` | Imager (SBC kernel + effivarfs patch) |
-| `ghcr.io/nhz-io/talos-sbc-rk3528-installer` | `1.13.7-e24c-3-a6c1bdc` | Extended installer (tailscale + cloudflared baked in UKI) |
+| `ghcr.io/shinsenkyo-net/imager-rk3528` | `v1.13.7-v14` | Imager (SBC kernel + effivarfs patch) |
+| `ghcr.io/shinsenkyo-net/talos-sbc-rk3528-installer` | `1.13.7-e24c-3-a6c1bdc` | Extended installer (tailscale + cloudflared baked in UKI) |
 
 ## Fork branch + tag
 
-- Fork: `nhz-io/sidero-talos`, branch `v1.13.7-rk3528`
+- Fork: `shinsenkyo-net/sidero-talos`, branch `v1.13.7-rk3528`
 - Tag: `v1.13.7-e24c-2-e794f71` at HEAD `e794f71`
 - effivarfs patch: commit `a6c1bdc52`
 - Makefile sed fix: commit `e794f71`

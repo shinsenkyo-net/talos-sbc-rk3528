@@ -14,7 +14,7 @@ FORK_URL="${TALOS_FORK_URL:-https://github.com/shinsenkyo-net/sidero-talos.git}"
 if [ -d "${TALOS_SRC_DIR}/.git" ]; then
   # Verify it's our fork; if not, abort rather than clobber.
   remote_url=$(git -C "${TALOS_SRC_DIR}" remote get-url origin 2>/dev/null || echo "")
-  if [[ "${remote_url}" != *"nhz-io/sidero-talos"* && "${remote_url}" != *"siderolabs/talos"* ]]; then
+  if [[ "${remote_url}" != *"shinsenkyo-net/sidero-talos"* && "${remote_url}" != *"nhz-io/sidero-talos"* && "${remote_url}" != *"siderolabs/talos"* ]]; then
     echo "ERROR: ${TALOS_SRC_DIR} exists but is not our talos fork (remote: ${remote_url})"
     exit 1
   fi

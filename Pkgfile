@@ -1,4 +1,4 @@
-# syntax = ghcr.io/nhz-io/sidero-bldr:v0.5.6
+# syntax = ghcr.io/shinsenkyo-net/sidero-bldr:v0.5.6
 
 format: v1alpha2
 

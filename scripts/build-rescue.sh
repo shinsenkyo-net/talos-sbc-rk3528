@@ -15,7 +15,7 @@
 #   BUILD_TAG       — e.g. 1.13.7-e24c-1-45e581e
 #   PROJECT_DIR     — talos-sbc-rk3528 repo root
 #   REGISTRY        — e.g. localhost:5000
-#   IMAGER_TAG      — e.g. ghcr.io/nhz-io/imager-rk3528:v1.13.7-v12
+#   IMAGER_TAG      — e.g. ghcr.io/shinsenkyo-net/imager-rk3528:v1.13.7-v12
 #   INSTALLER_TAG   — e.g. ghcr.io/shinsenkyo-net/talos-sbc-rk3528-installer:${BUILD_TAG}
 #   OVERLAY_TAG     — e.g. ghcr.io/shinsenkyo-net/talos-sbc-rk3528:${BUILD_TAG}
 #   UBOOT_BIN       — path to u-boot-rockchip.bin (from main build Step 2)

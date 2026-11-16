@@ -39,7 +39,7 @@ for the full design notes and milestone history.
 
 ## Supply chain
 
-All external sources forked into the `nhz-io` GitHub org at pinned tags:
+All external sources forked into the `shinsenkyo-net` GitHub org at pinned tags:
 
 | Fork | Upstream | Pinned at | Purpose |
 |------|----------|-----------|---------|
@@ -51,19 +51,19 @@ All external sources forked into the `nhz-io` GitHub org at pinned tags:
 | `shinsenkyo-net/sidero-tools` | `siderolabs/tools` | `v1.13.0` | Cross-toolchain (dtc, elfutils, etc.) |
 | `shinsenkyo-net/sidero-pkgs` | `siderolabs/pkgs` | `v1.13.0` | ~50 individual package sources (kernel, runc, ...) |
 
-Container images mirrored to `ghcr.io/nhz-io/` (they stayed there when the repos moved to
-the `shinsenkyo-net` org; new builds push to `ghcr.io/shinsenkyo-net/`):
+Container images mirrored to `ghcr.io/shinsenkyo-net/` (copied by digest from `ghcr.io/nhz-io/`
+when the repos moved to the `shinsenkyo-net` org; the old paths still exist):
 
-- `ghcr.io/nhz-io/sidero-bldr:v0.5.6`
-- `ghcr.io/nhz-io/sidero-toolchain:v1.13.0`
-- `ghcr.io/nhz-io/sidero-tools:v1.13.0-8-gc2844e6`
+- `ghcr.io/shinsenkyo-net/sidero-bldr:v0.5.6`
+- `ghcr.io/shinsenkyo-net/sidero-toolchain:v1.13.0`
+- `ghcr.io/shinsenkyo-net/sidero-tools:v1.13.0-8-gc2844e6`
 
 Individual PKGS packages (`dosfstools`, `kernel`, `runc`, ...) are mirrored
 lazily — only when the build pulls them. To mirror on-demand:
 
 ```bash
 docker buildx imagetools create \
-  --tag ghcr.io/nhz-io/sidero-<name>:<tag> \
+  --tag ghcr.io/shinsenkyo-net/sidero-<name>:<tag> \
   ghcr.io/siderolabs/<name>:<tag>
 ```
 
@@ -146,10 +146,10 @@ sudo dd if=metal-arm64.raw of=/dev/rdiskN bs=4M conv=sync
 | `PKGS` | `v1.9.0` | Sidero package tag |
 | `TOOLS_PREFIX` | `ghcr.io/siderolabs` | Tools image namespace |
 | `TOOLS` | `v1.9.0` | Tools image tag |
-| `BLDR_IMAGE` | `ghcr.io/nhz-io/sidero-bldr:v0.5.6` | bldr syntax image |
+| `BLDR_IMAGE` | `ghcr.io/shinsenkyo-net/sidero-bldr:v0.5.6` | bldr syntax image |
 | `IMAGE_PREFIX` | `ghcr.io/shinsenkyo-net` | Where to push U-Boot + overlay + installer images |
-| `SOURCE_PREFIX` | `ghcr.io/nhz-io` | Where existing images (imager, SBC kernel) are pulled from |
-| `IMAGER_TAG` | `ghcr.io/nhz-io/imager-rk3528:v1.13.7-v12` | Imager image to use |
+| `SOURCE_PREFIX` | `ghcr.io/shinsenkyo-net` | Where existing images (imager, SBC kernel) are pulled from |
+| `IMAGER_TAG` | `ghcr.io/shinsenkyo-net/imager-rk3528:v1.13.7-v12` | Imager image to use |
 
 ## Layout
 

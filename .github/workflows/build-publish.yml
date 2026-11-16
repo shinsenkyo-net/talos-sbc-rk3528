@@ -49,7 +49,7 @@ jobs:
           PROJECT_DIR: ${{ github.workspace }}
           TALOS_SRC_DIR: /tmp/talos-src-v1.13.7
           REGISTRY: localhost:5000
-          IMAGER_TAG: ghcr.io/nhz-io/imager-rk3528:v1.13.7-v12
+          IMAGER_TAG: ghcr.io/shinsenkyo-net/imager-rk3528:v1.13.7-v12
         run: |
           bash build.sh
 
@@ -83,7 +83,7 @@ jobs:
 
       - name: Push installer image to ghcr.io
         run: |
-          docker tag ghcr.io/nhz-io/imager-rk3528:v1.13.7-v12 \
+          docker tag ghcr.io/shinsenkyo-net/imager-rk3528:v1.13.7-v12 \
                      ghcr.io/shinsenkyo-net/talos-sbc-rk3528-installer:${{ github.ref_name }}
           docker push ghcr.io/shinsenkyo-net/talos-sbc-rk3528-installer:${{ github.ref_name }}
 

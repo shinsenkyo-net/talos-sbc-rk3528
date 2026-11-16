@@ -19,15 +19,14 @@ PROJECT_DIR="${PROJECT_DIR:-$(cd "$(dirname "$0")" && pwd)}"
 TALOS_SRC_DIR="${TALOS_SRC_DIR:-$HOME/talos/sidero-talos}"
 REGISTRY="${REGISTRY:-localhost:5000}"
 
-# --- Sidero image refs (mirrored to ghcr.io/nhz-io/sidero-* by Phase C) ---
-# Existing images (bldr mirror, imager, SBC kernel) still live under ghcr.io/nhz-io and are PULLED
-# from SOURCE_PREFIX; new images are PUSHED to IMAGE_PREFIX (the shinsenkyo-net org).
-SOURCE_PREFIX="${SOURCE_PREFIX:-ghcr.io/nhz-io}"
+# --- Sidero image refs (mirrored to ghcr.io/shinsenkyo-net/sidero-*; originally ghcr.io/nhz-io, copied by digest 2026-11-16) ---
+# SOURCE_PREFIX: where existing images (imager, SBC kernel) are PULLED from; IMAGE_PREFIX: where new ones are PUSHED.
+SOURCE_PREFIX="${SOURCE_PREFIX:-ghcr.io/shinsenkyo-net}"
 PKGS_PREFIX="${PKGS_PREFIX:-ghcr.io/siderolabs}"
 PKGS="${PKGS:-v1.9.0}"
 TOOLS_PREFIX="${TOOLS_PREFIX:-ghcr.io/siderolabs}"
 TOOLS="${TOOLS:-v1.9.0}"
-BLDR_IMAGE="${BLDR_IMAGE:-ghcr.io/nhz-io/sidero-bldr:v0.5.6}"
+BLDR_IMAGE="${BLDR_IMAGE:-ghcr.io/shinsenkyo-net/sidero-bldr:v0.5.6}"
 
 # --- Talos system extensions (official, multi-arch: amd64 + arm64) ---
 # Pinned to extensions repo tag v1.13.7 (talos-extensions submodule).

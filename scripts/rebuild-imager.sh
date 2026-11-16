@@ -15,8 +15,8 @@ set -eou pipefail
 TAG="${1:-v1.13.7-v13}"
 TALOS_SRC_DIR="${TALOS_SRC_DIR:-$HOME/talos/sidero-talos}"
 IMAGE_PREFIX="${IMAGE_PREFIX:-ghcr.io/shinsenkyo-net}"
-# Existing SBC kernel image is still under ghcr.io/nhz-io (pulled, not pushed).
-SOURCE_PREFIX="${SOURCE_PREFIX:-ghcr.io/nhz-io}"
+# Where the existing SBC kernel image is pulled from (not pushed).
+SOURCE_PREFIX="${SOURCE_PREFIX:-ghcr.io/shinsenkyo-net}"
 IMAGER_TAG="${IMAGE_PREFIX}/imager-rk3528:${TAG}"
 
 # SBC kernel image (arm64, built by talos-sbc-rk3528 bldr kernel-radxa-e24c target).
