@@ -94,8 +94,10 @@ jobs:
           test -s /tmp/k/usr/share/spdx/kernel.spdx.json
           rel=$(ls /tmp/k/usr/lib/modules)
           echo "kernel release: $rel"
-          # GMAC + RTL8365MB are built in (=y), so they must appear in modules.builtin.
-          for m in dwmac-rockchip rtl8365mb; do
+          # GMAC (CONFIG_DWMAC_ROCKCHIP -> dwmac-rk.ko) + RTL8365MB are built in (=y),
+          # so they must appear in modules.builtin. (vmlinuz is EFI_ZBOOT-compressed,
+          # so grepping it for driver strings finds nothing.)
+          for m in dwmac-rk rtl8365mb stmmac-platform; do
             grep -q "/${m}.ko" "/tmp/k/usr/lib/modules/${rel}/modules.builtin" \
               || { echo "::error::${m} not built in"; exit 1; }
           done
