@@ -19,9 +19,10 @@ IMAGE_PREFIX="${IMAGE_PREFIX:-ghcr.io/shinsenkyo-net}"
 SOURCE_PREFIX="${SOURCE_PREFIX:-ghcr.io/shinsenkyo-net}"
 IMAGER_TAG="${IMAGE_PREFIX}/imager-rk3528:${TAG}"
 
-# SBC kernel image (arm64, built by talos-sbc-rk3528 bldr kernel-radxa-e24c target).
+# SBC kernel image (arm64): built and published by .github/workflows/kernel.yml
+# (bldr target kernel-radxa-e24c + artifacts/kernel/talos-layout.Dockerfile).
 # Contains RTL8365MB switch driver + Rockchip GMAC driver.
-SBC_KERNEL_IMAGE="${SBC_KERNEL_IMAGE:-${SOURCE_PREFIX}/talos-kernel-rk3528:v0.5.1-talos}"
+SBC_KERNEL_IMAGE="${SBC_KERNEL_IMAGE:-${SOURCE_PREFIX}/talos-kernel-rk3528:6.18.39-e24c-1-talos}"
 
 # Stock Sidero kernel for amd64 (SBC kernel is arm64-only).
 STOCK_KERNEL_AMD64="${STOCK_KERNEL_AMD64:-ghcr.io/siderolabs/kernel:v1.13.0-49-g91fe0a0}"

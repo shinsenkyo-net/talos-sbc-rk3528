@@ -6,7 +6,7 @@ This repo builds the Radxa E24C (RK3528A) Talos SBC image, U-Boot, and extension
 
 ### 1. The imager MUST be built with the SBC kernel
 
-The SBC kernel (`ghcr.io/shinsenkyo-net/talos-kernel-rk3528:v0.5.1-talos`) contains the Rockchip GMAC driver + RTL8365MB switch driver. Without it, e24c boots with NO network interfaces — `end0`/`wan` are never created and every service hangs.
+The SBC kernel (`ghcr.io/shinsenkyo-net/talos-kernel-rk3528:6.18.39-e24c-1-talos`, built and published by `.github/workflows/kernel.yml`; the July `v0.5.1-talos` was local-only and never on GHCR) contains the Rockchip GMAC driver + RTL8365MB switch driver. Without it, e24c boots with NO network interfaces — `end0`/`wan` are never created and every service hangs.
 
 - Use `scripts/rebuild-imager.sh` — it passes `PKG_KERNEL` + `PKG_KERNEL_AMD64` correctly.
 - NEVER run `make docker-imager` directly without `PKG_KERNEL`. The Makefile defaults to the stock Sidero kernel (clang, no SBC drivers).
